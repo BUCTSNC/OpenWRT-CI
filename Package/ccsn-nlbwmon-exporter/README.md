@@ -24,3 +24,12 @@ Then add controlled device aliases and DHCP pools to
 `/etc/config/ccsn-nlbwmon-exporter`. The source-of-truth configuration examples
 and firewall guidance are maintained with the Kubernetes GitOps repository at
 `network/openwrt/nlbwmon-exporter/`.
+
+The included `luci-app-ccsn-observability` page under **Services → CCSN
+Observability** manages both exporter endpoints, client aliases, and DHCP pools.
+The official **Services → Bandwidth Monitoring** page remains responsible for
+nlbwmon's accounting engine and history.
+
+The firmware also includes the official **Services → SNMPD** page with the
+SSL-enabled Net-SNMP daemon. It is intentionally disabled by default; configure
+SNMPv3 there before allowing UDP/161 from the monitoring network.

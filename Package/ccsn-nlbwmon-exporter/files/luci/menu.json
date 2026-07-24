@@ -1,0 +1,15 @@
+{
+  "admin/services/ccsn-observability": {
+    "title": "CCSN Observability",
+    "order": 95,
+    "action": {
+      "type": "view",
+      "path": "ccsn-observability/overview"
+    },
+    "depends": {
+      "acl": [
+        "luci-app-ccsn-observability"
+      ]
+    }
+  }
+}

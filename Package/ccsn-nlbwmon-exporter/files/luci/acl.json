@@ -1,0 +1,19 @@
+{
+  "luci-app-ccsn-observability": {
+    "description": "Grant UCI access for CCSN observability configuration",
+    "read": {
+      "uci": [
+        "ccsn-nlbwmon-exporter",
+        "prometheus-node-exporter-lua",
+        "prometheus-node-exporter-ucode"
+      ]
+    },
+    "write": {
+      "uci": [
+        "ccsn-nlbwmon-exporter",
+        "prometheus-node-exporter-lua",
+        "prometheus-node-exporter-ucode"
+      ]
+    }
+  }
+}
