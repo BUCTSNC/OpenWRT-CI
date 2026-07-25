@@ -1,0 +1,130 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the luci-app-ccsn-observability package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: luci-app-ccsn-observability\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-07-25 13:58+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: htdocs/luci-static/resources/view/ccsn-observability/overview.js:12
+#, javascript-format
+msgid "%s must use lowercase letters, digits, hyphens, or underscores."
+msgstr ""
+
+#: htdocs/luci-static/resources/view/ccsn-observability/overview.js:43
+msgid "CCSN Observability"
+msgstr ""
+
+#: htdocs/luci-static/resources/view/ccsn-observability/overview.js:44
+msgid ""
+"Configure Prometheus endpoints and DHCP-aware client accounting. Client IDs "
+"use DHCP hostnames and fall back to MAC addresses when no hostname is "
+"available. Firewall access is managed separately."
+msgstr ""
+
+#: htdocs/luci-static/resources/view/ccsn-observability/overview.js:49
+msgid "Exporter endpoints"
+msgstr ""
+
+#: htdocs/luci-static/resources/view/ccsn-observability/overview.js:50
+#: htdocs/luci-static/resources/view/ccsn-observability/overview.js:81
+msgid "DHCP pools"
+msgstr ""
+
+#: htdocs/luci-static/resources/view/ccsn-observability/overview.js:52
+msgid "System exporter interface"
+msgstr ""
+
+#: htdocs/luci-static/resources/view/ccsn-observability/overview.js:52
+msgid ""
+"Logical management interface for system, Wi-Fi, dnsmasq, and conntrack "
+"metrics on TCP/9101. Do not bind this endpoint to an untrusted WAN interface."
+msgstr ""
+
+#: htdocs/luci-static/resources/view/ccsn-observability/overview.js:56
+msgid "System exporter port"
+msgstr ""
+
+#: htdocs/luci-static/resources/view/ccsn-observability/overview.js:60
+msgid "Collect Wi-Fi station totals"
+msgstr ""
+
+#: htdocs/luci-static/resources/view/ccsn-observability/overview.js:60
+msgid ""
+"Collect station-level metrics locally. The Kubernetes scrape policy drops "
+"raw Wi-Fi station series before ingestion."
+msgstr ""
+
+#: htdocs/luci-static/resources/view/ccsn-observability/overview.js:65
+msgid "Client-accounting exporter interface"
+msgstr ""
+
+#: htdocs/luci-static/resources/view/ccsn-observability/overview.js:65
+msgid "Logical management interface for nlbwmon client accounting on TCP/9100."
+msgstr ""
+
+#: htdocs/luci-static/resources/view/ccsn-observability/overview.js:69
+msgid "Client-accounting exporter port"
+msgstr ""
+
+#: htdocs/luci-static/resources/view/ccsn-observability/overview.js:73
+#: htdocs/luci-static/resources/view/ccsn-observability/overview.js:75
+msgid "Fallback client network"
+msgstr ""
+
+#: htdocs/luci-static/resources/view/ccsn-observability/overview.js:73
+msgid "Used only when a client address does not match any DHCP pool CIDR."
+msgstr ""
+
+#: htdocs/luci-static/resources/view/ccsn-observability/overview.js:77
+#: htdocs/luci-static/resources/view/ccsn-observability/overview.js:79
+msgid "Default traffic class"
+msgstr ""
+
+#: htdocs/luci-static/resources/view/ccsn-observability/overview.js:77
+msgid ""
+"Bounded label attached to client traffic, for example internet or internal."
+msgstr ""
+
+#: htdocs/luci-static/resources/view/ccsn-observability/overview.js:81
+msgid ""
+"Each pool maps an IPv4 CIDR to a network label. Pool capacity is read from "
+"the referenced DHCP section; active leases and client network labels are "
+"inferred automatically."
+msgstr ""
+
+#: htdocs/luci-static/resources/view/ccsn-observability/overview.js:85
+#: htdocs/luci-static/resources/view/ccsn-observability/overview.js:87
+msgid "Network label"
+msgstr ""
+
+#: htdocs/luci-static/resources/view/ccsn-observability/overview.js:85
+msgid "Stable label such as lan, guest, or iot."
+msgstr ""
+
+#: htdocs/luci-static/resources/view/ccsn-observability/overview.js:89
+msgid "DHCP section"
+msgstr ""
+
+#: htdocs/luci-static/resources/view/ccsn-observability/overview.js:89
+msgid "UCI section name in /etc/config/dhcp, usually lan."
+msgstr ""
+
+#: htdocs/luci-static/resources/view/ccsn-observability/overview.js:93
+msgid "IPv4 CIDR"
+msgstr ""
+
+#: htdocs/luci-static/resources/view/ccsn-observability/overview.js:93
+msgid "Subnet used to assign clients to this network label."
+msgstr ""

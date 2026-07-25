@@ -1,0 +1,133 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: luci-app-ccsn-observability\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-07-25 13:58+0800\n"
+"PO-Revision-Date: 2026-07-25 00:00+0800\n"
+"Last-Translator: CCSN\n"
+"Language-Team: Chinese (Simplified Han script)\n"
+"Language: zh_Hans\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: htdocs/luci-static/resources/view/ccsn-observability/overview.js:12
+#, javascript-format
+msgid "%s must use lowercase letters, digits, hyphens, or underscores."
+msgstr "%s 只能包含小写字母、数字、连字符或下划线。"
+
+#: htdocs/luci-static/resources/view/ccsn-observability/overview.js:43
+msgid "CCSN Observability"
+msgstr "CCSN 可观测性"
+
+#: htdocs/luci-static/resources/view/ccsn-observability/overview.js:44
+msgid ""
+"Configure Prometheus endpoints and DHCP-aware client accounting. Client IDs "
+"use DHCP hostnames and fall back to MAC addresses when no hostname is "
+"available. Firewall access is managed separately."
+msgstr ""
+"配置 Prometheus 端点和基于 DHCP 的客户端流量统计。客户端 ID 优先使用 DHCP 主"
+"机名；没有主机名时回退为 MAC 地址。防火墙访问策略需单独管理。"
+
+#: htdocs/luci-static/resources/view/ccsn-observability/overview.js:49
+msgid "Exporter endpoints"
+msgstr "Exporter 端点"
+
+#: htdocs/luci-static/resources/view/ccsn-observability/overview.js:50
+#: htdocs/luci-static/resources/view/ccsn-observability/overview.js:81
+msgid "DHCP pools"
+msgstr "DHCP 地址池"
+
+#: htdocs/luci-static/resources/view/ccsn-observability/overview.js:52
+msgid "System exporter interface"
+msgstr "系统 Exporter 接口"
+
+#: htdocs/luci-static/resources/view/ccsn-observability/overview.js:52
+msgid ""
+"Logical management interface for system, Wi-Fi, dnsmasq, and conntrack "
+"metrics on TCP/9101. Do not bind this endpoint to an untrusted WAN interface."
+msgstr ""
+"在 TCP/9101 上提供系统、Wi-Fi、dnsmasq 和 conntrack 指标的逻辑管理接口。不要"
+"将此端点绑定到不受信任的 WAN 接口。"
+
+#: htdocs/luci-static/resources/view/ccsn-observability/overview.js:56
+msgid "System exporter port"
+msgstr "系统 Exporter 端口"
+
+#: htdocs/luci-static/resources/view/ccsn-observability/overview.js:60
+msgid "Collect Wi-Fi station totals"
+msgstr "采集 Wi-Fi 客户端统计"
+
+#: htdocs/luci-static/resources/view/ccsn-observability/overview.js:60
+msgid ""
+"Collect station-level metrics locally. The Kubernetes scrape policy drops "
+"raw Wi-Fi station series before ingestion."
+msgstr ""
+"在本地采集客户端级指标。Kubernetes 抓取策略会在写入前丢弃原始 Wi-Fi 客户端序"
+"列。"
+
+#: htdocs/luci-static/resources/view/ccsn-observability/overview.js:65
+msgid "Client-accounting exporter interface"
+msgstr "客户端流量 Exporter 接口"
+
+#: htdocs/luci-static/resources/view/ccsn-observability/overview.js:65
+msgid "Logical management interface for nlbwmon client accounting on TCP/9100."
+msgstr "在 TCP/9100 上提供 nlbwmon 客户端流量统计的逻辑管理接口。"
+
+#: htdocs/luci-static/resources/view/ccsn-observability/overview.js:69
+msgid "Client-accounting exporter port"
+msgstr "客户端流量 Exporter 端口"
+
+#: htdocs/luci-static/resources/view/ccsn-observability/overview.js:73
+#: htdocs/luci-static/resources/view/ccsn-observability/overview.js:75
+msgid "Fallback client network"
+msgstr "客户端默认网络"
+
+#: htdocs/luci-static/resources/view/ccsn-observability/overview.js:73
+msgid "Used only when a client address does not match any DHCP pool CIDR."
+msgstr "仅在客户端地址不匹配任何 DHCP 地址池 CIDR 时使用。"
+
+#: htdocs/luci-static/resources/view/ccsn-observability/overview.js:77
+#: htdocs/luci-static/resources/view/ccsn-observability/overview.js:79
+msgid "Default traffic class"
+msgstr "默认流量类别"
+
+#: htdocs/luci-static/resources/view/ccsn-observability/overview.js:77
+msgid ""
+"Bounded label attached to client traffic, for example internet or internal."
+msgstr "附加到客户端流量的有限标签，例如 internet 或 internal。"
+
+#: htdocs/luci-static/resources/view/ccsn-observability/overview.js:81
+msgid ""
+"Each pool maps an IPv4 CIDR to a network label. Pool capacity is read from "
+"the referenced DHCP section; active leases and client network labels are "
+"inferred automatically."
+msgstr ""
+"每个地址池将一个 IPv4 CIDR 映射到网络标签。地址池容量从引用的 DHCP 配置节读"
+"取；活跃租约和客户端网络标签将自动推断。"
+
+#: htdocs/luci-static/resources/view/ccsn-observability/overview.js:85
+#: htdocs/luci-static/resources/view/ccsn-observability/overview.js:87
+msgid "Network label"
+msgstr "网络标签"
+
+#: htdocs/luci-static/resources/view/ccsn-observability/overview.js:85
+msgid "Stable label such as lan, guest, or iot."
+msgstr "稳定标签，例如 lan、guest 或 iot。"
+
+#: htdocs/luci-static/resources/view/ccsn-observability/overview.js:89
+msgid "DHCP section"
+msgstr "DHCP 配置节"
+
+#: htdocs/luci-static/resources/view/ccsn-observability/overview.js:89
+msgid "UCI section name in /etc/config/dhcp, usually lan."
+msgstr "/etc/config/dhcp 中的 UCI 配置节名称，通常为 lan。"
+
+#: htdocs/luci-static/resources/view/ccsn-observability/overview.js:93
+msgid "IPv4 CIDR"
+msgstr "IPv4 CIDR"
+
+#: htdocs/luci-static/resources/view/ccsn-observability/overview.js:93
+msgid "Subnet used to assign clients to this network label."
+msgstr "用于将客户端归入此网络标签的子网。"

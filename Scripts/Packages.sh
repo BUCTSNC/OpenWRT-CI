@@ -2,7 +2,7 @@
 
 # Repository-owned packages are copied into the buildroot package directory
 # before third-party package customisation runs.
-cp -a "$GITHUB_WORKSPACE/Package/ccsn-nlbwmon-exporter" ./ccsn-nlbwmon-exporter
+cp -a "$GITHUB_WORKSPACE"/Package/* ./
 
 #安装和更新软件包
 UPDATE_PACKAGE() {
