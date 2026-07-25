@@ -2,6 +2,29 @@
 
 PKG_PATH="$GITHUB_WORKSPACE/wrt/package/"
 
+# Give the two upstream exporters the same UCI enabled semantics as SmartDNS.
+# LuCI writes only their UCI state; their own procd reload triggers apply it.
+apply_observability_exporter_patch() {
+	local package_name="$1"
+	local patch_file="$2"
+	local package_files="../feeds/packages/utils/$package_name/files"
+
+	if grep -q 'config_get_bool enabled "main" enabled 1' "$package_files/init" 2>/dev/null || \
+		grep -q 'config_get_bool enabled "main" enabled 1' "$package_files/etc/init.d/$package_name" 2>/dev/null; then
+		echo "$package_name already supports the enabled UCI option"
+		return
+	fi
+
+	patch -d .. -p1 < "$GITHUB_WORKSPACE/$patch_file"
+}
+
+apply_observability_exporter_patch \
+	"prometheus-node-exporter-ucode" \
+	"Package/patches/prometheus-node-exporter-ucode-enabled.patch"
+apply_observability_exporter_patch \
+	"prometheus-node-exporter-lua" \
+	"Package/patches/prometheus-node-exporter-lua-enabled.patch"
+
 #预置HomeProxy数据
 if [ -d *"homeproxy"* ]; then
 	echo " "

@@ -1,0 +1,23 @@
+--- a/feeds/packages/utils/prometheus-node-exporter-lua/files/etc/config/prometheus-node-exporter-lua
++++ b/feeds/packages/utils/prometheus-node-exporter-lua/files/etc/config/prometheus-node-exporter-lua
+@@ -1,4 +1,5 @@
+ config prometheus-node-exporter-lua 'main'
++	option enabled '1'
+ 	option listen_interface 'loopback'
+ 	option listen_port '9100'
+ 	#option cert '/etc/uhttpd.crt'
+--- a/feeds/packages/utils/prometheus-node-exporter-lua/files/etc/init.d/prometheus-node-exporter-lua
++++ b/feeds/packages/utils/prometheus-node-exporter-lua/files/etc/init.d/prometheus-node-exporter-lua
+@@ -16,9 +16,12 @@
+ 	config_load prometheus-node-exporter-lua.main
++	config_get_bool enabled "main" enabled 1
+ 	config_get keepalive "main" http_keepalive 70
+ 	config_get interface "main" listen_interface "loopback"
+ 	config_get port "main" listen_port 9100
+ 	config_get cert "main" cert
+ 	config_get key "main" key
+ 	config_get omit_zero_values "main" omit_zero_values 0
++	[ "$enabled" -eq 1 ] || return 0
++
+ 
+ 	[ "$interface" = "*" ] || {
