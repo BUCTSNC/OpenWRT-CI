@@ -15,6 +15,11 @@ those services through their standard UCI triggers. Configure and manage
 nlbwmon itself only in **Services → Bandwidth Monitoring**. CCSN Observability
 never starts, stops, or changes it.
 
+At image build time, the package registers the two upstream exporter init
+scripts. This is normal OpenWrt service registration, not a CCSN wrapper or a
+first-boot action; each exporter still creates no procd instance when its own
+UCI `enabled` option is `0`.
+
 For non-LuCI recovery only, the equivalent Lua exporter settings are:
 
 ```sh
