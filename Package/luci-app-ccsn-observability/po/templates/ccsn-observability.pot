@@ -1,0 +1,61 @@
+msgid ""
+msgstr "Content-Type: text/plain; charset=UTF-8"
+
+#: Package/luci-app-ccsn-observability/htdocs/luci-static/resources/view/ccsn-observability/overview.js:34
+#: Package/luci-app-ccsn-observability/root/usr/share/luci/menu.d/luci-app-ccsn-observability.json:3
+msgid "CCSN Observability"
+msgstr ""
+
+#: Package/luci-app-ccsn-observability/htdocs/luci-static/resources/view/ccsn-observability/overview.js:55
+msgid "Client-accounting exporter interface"
+msgstr ""
+
+#: Package/luci-app-ccsn-observability/htdocs/luci-static/resources/view/ccsn-observability/overview.js:59
+msgid "Client-accounting exporter port"
+msgstr ""
+
+#: Package/luci-app-ccsn-observability/htdocs/luci-static/resources/view/ccsn-observability/overview.js:50
+msgid "Collect Wi-Fi station totals"
+msgstr ""
+
+#: Package/luci-app-ccsn-observability/htdocs/luci-static/resources/view/ccsn-observability/overview.js:50
+msgid ""
+"Collect station-level metrics locally. The Kubernetes scrape policy drops "
+"raw Wi-Fi station series before ingestion."
+msgstr ""
+
+#: Package/luci-app-ccsn-observability/htdocs/luci-static/resources/view/ccsn-observability/overview.js:35
+msgid ""
+"Configure Prometheus endpoints and client accounting. OpenWrt logical "
+"interfaces are the only network identity; their active IPv4, IPv6, and "
+"DHCPv6-PD assignment prefixes are discovered automatically. VLANs work with "
+"local DHCP, external DHCP, DHCP relay, or static addressing. Client IDs use "
+"locally known hostnames and fall back to MAC addresses. Firewall access is "
+"managed separately."
+msgstr ""
+
+#: Package/luci-app-ccsn-observability/htdocs/luci-static/resources/view/ccsn-observability/overview.js:40
+msgid "Exporter endpoints"
+msgstr ""
+
+#: Package/luci-app-ccsn-observability/root/usr/share/rpcd/acl.d/luci-app-ccsn-observability.json:3
+msgid "Grant UCI access for CCSN observability configuration"
+msgstr ""
+
+#: Package/luci-app-ccsn-observability/htdocs/luci-static/resources/view/ccsn-observability/overview.js:55
+msgid "Logical management interface for nlbwmon client accounting on TCP/9100."
+msgstr ""
+
+#: Package/luci-app-ccsn-observability/htdocs/luci-static/resources/view/ccsn-observability/overview.js:42
+msgid ""
+"Logical management interface for system, Wi-Fi, dnsmasq, and conntrack "
+"metrics on TCP/9101. Do not bind this endpoint to an untrusted WAN interface."
+msgstr ""
+
+#: Package/luci-app-ccsn-observability/htdocs/luci-static/resources/view/ccsn-observability/overview.js:42
+msgid "System exporter interface"
+msgstr ""
+
+#: Package/luci-app-ccsn-observability/htdocs/luci-static/resources/view/ccsn-observability/overview.js:46
+msgid "System exporter port"
+msgstr ""

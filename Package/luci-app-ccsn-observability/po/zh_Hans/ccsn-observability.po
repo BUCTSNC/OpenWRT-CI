@@ -1,0 +1,62 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: luci-app-ccsn-observability\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-07-25 15:27+0800\n"
+"PO-Revision-Date: 2026-07-25 00:00+0800\n"
+"Last-Translator: CCSN\n"
+"Language-Team: Chinese (Simplified Han script)\n"
+"Language: zh_Hans\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: Package/luci-app-ccsn-observability/htdocs/luci-static/resources/view/ccsn-observability/overview.js:34
+#: Package/luci-app-ccsn-observability/root/usr/share/luci/menu.d/luci-app-ccsn-observability.json:3
+msgid "CCSN Observability"
+msgstr "CCSN 可观测性"
+
+#: Package/luci-app-ccsn-observability/htdocs/luci-static/resources/view/ccsn-observability/overview.js:55
+msgid "Client-accounting exporter interface"
+msgstr "客户端流量 Exporter 接口"
+
+#: Package/luci-app-ccsn-observability/htdocs/luci-static/resources/view/ccsn-observability/overview.js:59
+msgid "Client-accounting exporter port"
+msgstr "客户端流量 Exporter 端口"
+
+#: Package/luci-app-ccsn-observability/htdocs/luci-static/resources/view/ccsn-observability/overview.js:50
+msgid "Collect Wi-Fi station totals"
+msgstr "采集 Wi-Fi 客户端统计"
+
+#: Package/luci-app-ccsn-observability/htdocs/luci-static/resources/view/ccsn-observability/overview.js:50
+msgid "Collect station-level metrics locally. The Kubernetes scrape policy drops raw Wi-Fi station series before ingestion."
+msgstr "在本地采集客户端级指标。Kubernetes 抓取策略会在写入前丢弃原始 Wi-Fi 客户端序列。"
+
+#: Package/luci-app-ccsn-observability/htdocs/luci-static/resources/view/ccsn-observability/overview.js:35
+msgid "Configure Prometheus endpoints and client accounting. OpenWrt logical interfaces are the only network identity; their active IPv4, IPv6, and DHCPv6-PD assignment prefixes are discovered automatically. VLANs work with local DHCP, external DHCP, DHCP relay, or static addressing. Client IDs use locally known hostnames and fall back to MAC addresses. Firewall access is managed separately."
+msgstr "配置 Prometheus 端点和客户端流量统计。OpenWrt 逻辑接口是唯一的网络身份，其活跃 IPv4、IPv6 和 DHCPv6-PD 分配前缀会自动发现。VLAN 可使用本机 DHCP、外部 DHCP、DHCP 中继或静态地址。客户端 ID 优先使用本机已知的主机名，否则回退为 MAC 地址。防火墙访问策略需单独管理。"
+
+#: Package/luci-app-ccsn-observability/htdocs/luci-static/resources/view/ccsn-observability/overview.js:40
+msgid "Exporter endpoints"
+msgstr "Exporter 端点"
+
+#: Package/luci-app-ccsn-observability/root/usr/share/rpcd/acl.d/luci-app-ccsn-observability.json:3
+msgid "Grant UCI access for CCSN observability configuration"
+msgstr "授予 CCSN 可观测性配置的 UCI 访问权限"
+
+#: Package/luci-app-ccsn-observability/htdocs/luci-static/resources/view/ccsn-observability/overview.js:55
+msgid "Logical management interface for nlbwmon client accounting on TCP/9100."
+msgstr "在 TCP/9100 上提供 nlbwmon 客户端流量统计的逻辑管理接口。"
+
+#: Package/luci-app-ccsn-observability/htdocs/luci-static/resources/view/ccsn-observability/overview.js:42
+msgid "Logical management interface for system, Wi-Fi, dnsmasq, and conntrack metrics on TCP/9101. Do not bind this endpoint to an untrusted WAN interface."
+msgstr "在 TCP/9101 上提供系统、Wi-Fi、dnsmasq 和 conntrack 指标的逻辑管理接口。不要将此端点绑定到不受信任的 WAN 接口。"
+
+#: Package/luci-app-ccsn-observability/htdocs/luci-static/resources/view/ccsn-observability/overview.js:42
+msgid "System exporter interface"
+msgstr "系统 Exporter 接口"
+
+#: Package/luci-app-ccsn-observability/htdocs/luci-static/resources/view/ccsn-observability/overview.js:46
+msgid "System exporter port"
+msgstr "系统 Exporter 端口"

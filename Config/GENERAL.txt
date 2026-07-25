@@ -15,8 +15,9 @@ CONFIG_PACKAGE_nlbwmon=y
 CONFIG_PACKAGE_luci-app-nlbwmon=y
 CONFIG_PACKAGE_ccsn-nlbwmon-exporter=y
 CONFIG_PACKAGE_luci-app-ccsn-observability=y
-# Optional standards-based monitoring endpoint. SNMP remains disabled until
-# configured through the official LuCI page; use SNMPv3 with AES support.
+CONFIG_PACKAGE_luci-i18n-ccsn-observability-zh-cn=y
+# Optional standards-based monitoring endpoint. Configure its security policy
+# separately through the official LuCI page; use SNMPv3 with AES support.
 CONFIG_PACKAGE_snmpd-ssl=y
 CONFIG_PACKAGE_snmp-utils-ssl=y
 CONFIG_PACKAGE_luci-app-snmpd=y
