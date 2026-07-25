@@ -14,6 +14,17 @@ local function bounded_label(value, fallback)
   return escape_label(value)
 end
 
+local function automatic_client_id(hostname, mac)
+  local normalized = tostring(hostname or ""):lower()
+  normalized = normalized:gsub("[^a-z0-9]+", "-")
+  normalized = normalized:gsub("^-+", ""):gsub("-+$", "")
+  if normalized ~= "" and normalized ~= "unknown" then
+    return normalized
+  end
+  local compact_mac = tostring(mac or ""):gsub("[^0-9a-f]", "")
+  return compact_mac ~= "" and "mac_" .. compact_mac or "mac_unknown"
+end
+
 local function split_tsv(line)
   local fields = {}
   for field in (line .. "\t"):gmatch("(.-)\t") do
@@ -49,20 +60,7 @@ end
 local function load_config()
   local uci = require("uci").cursor()
   local settings = uci:get_all("ccsn-nlbwmon-exporter", "main") or {}
-  local aliases = {}
   local pools = {}
-
-  uci:foreach("ccsn-nlbwmon-exporter", "client", function(section)
-    local mac = tostring(section.mac or ""):lower()
-    if not mac:match("^[0-9a-f][0-9a-f]:[0-9a-f][0-9a-f]:[0-9a-f][0-9a-f]:[0-9a-f][0-9a-f]:[0-9a-f][0-9a-f]:[0-9a-f][0-9a-f]$") then
-      error("invalid client MAC in ccsn-nlbwmon-exporter config")
-    end
-    aliases[mac] = {
-      client_id = bounded_label(section.client_id, section[".name"]),
-      network = bounded_label(section.network, "unknown"),
-      traffic_class = bounded_label(section.traffic_class, "internet"),
-    }
-  end)
 
   uci:foreach("ccsn-nlbwmon-exporter", "dhcp_pool", function(section)
     local pool_size = tonumber(uci:get("dhcp", section.dhcp_section, "limit"))
@@ -76,10 +74,9 @@ local function load_config()
     }
   end)
 
-  return aliases, pools, {
-    client_id = "unknown",
-    network = bounded_label(settings.unknown_network, "unknown"),
-    traffic_class = bounded_label(settings.unknown_traffic_class, "internet"),
+  return pools, {
+    network = bounded_label(settings.default_network or settings.unknown_network, "unknown"),
+    traffic_class = bounded_label(settings.default_traffic_class or settings.unknown_traffic_class, "internet"),
   }
 end
 
@@ -107,7 +104,7 @@ local function load_hostnames()
   return by_ip, by_mac
 end
 
-local function scrape_traffic(aliases, unknown)
+local function scrape_traffic(defaults)
   local traffic = metric("openwrt_client_traffic_bytes_total", "counter")
   local connections = metric("openwrt_client_connections_total", "counter")
   local hostnames_by_ip, hostnames_by_mac = load_hostnames()
@@ -132,12 +129,12 @@ local function scrape_traffic(aliases, unknown)
     local fields = split_tsv(line)
     local mac = tostring(fields[header.mac] or ""):lower()
     local ip = tostring(fields[header.ip] or "")
-    local identity = aliases[mac] or unknown
+    local hostname = hostnames_by_ip[ip] or hostnames_by_mac[mac] or "unknown"
     local labels = {
-      client_id = identity.client_id, network = identity.network, traffic_class = identity.traffic_class,
+      client_id = automatic_client_id(hostname, mac), network = defaults.network, traffic_class = defaults.traffic_class,
       family = escape_label(fields[header.family]), proto = escape_label(fields[header.proto]),
       port = escape_label(fields[header.port]), mac = escape_label(mac), ip = escape_label(ip),
-      hostname = escape_label(hostnames_by_ip[ip] or hostnames_by_mac[mac] or "unknown"),
+      hostname = escape_label(hostname),
       layer7 = escape_label(header.layer7 and fields[header.layer7] or "unknown"),
     }
     local receive_labels, transmit_labels = {}, {}
@@ -171,8 +168,8 @@ local function scrape_dhcp(pools)
 end
 
 local function scrape()
-  local aliases, pools, unknown = load_config()
-  scrape_traffic(aliases, unknown)
+  local pools, defaults = load_config()
+  scrape_traffic(defaults)
   scrape_dhcp(pools)
 end
 

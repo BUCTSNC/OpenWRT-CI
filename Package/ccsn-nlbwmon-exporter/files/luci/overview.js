@@ -47,7 +47,6 @@ return view.extend({
 		s = m.section(form.NamedSection, "main", "settings");
 		s.anonymous = true;
 		s.tab("endpoints", _("Exporter endpoints"));
-		s.tab("identity", _("Client identity"));
 		s.tab("dhcp", _("DHCP pools"));
 
 		o = s.taboption("endpoints", form.Value, "_ucode_interface", _("System exporter interface"), _("Logical interface for the ucode endpoint on TCP/9101. Use the management interface, not an untrusted WAN interface."));
@@ -71,33 +70,13 @@ return view.extend({
 		o.datatype = "range(1,65535)";
 		exporterOption(o, "prometheus-node-exporter-lua", "main", "listen_port", "9100");
 
-		o = s.taboption("identity", form.Value, "unknown_network", _("Unknown client network"));
+		o = s.taboption("endpoints", form.Value, "default_network", _("Default client network"));
 		o.rmempty = false;
-		o.validate = labelValidator(_("Unknown client network"));
+		o.validate = labelValidator(_("Default client network"));
 
-		o = s.taboption("identity", form.Value, "unknown_traffic_class", _("Unknown client traffic class"));
+		o = s.taboption("endpoints", form.Value, "default_traffic_class", _("Default traffic class"));
 		o.rmempty = false;
-		o.validate = labelValidator(_("Unknown client traffic class"));
-
-		s = m.section(form.GridSection, "client", _("Client aliases"), _("Map a MAC address to a stable client ID for long-term traffic aggregation. Raw MAC, IP and hostname audit labels are still exported."));
-		s.anonymous = true;
-		s.addremove = true;
-
-		o = s.option(form.Value, "mac", _("MAC address"));
-		o.datatype = "macaddr";
-		o.rmempty = false;
-
-		o = s.option(form.Value, "client_id", _("Client ID"));
-		o.rmempty = false;
-		o.validate = labelValidator(_("Client ID"));
-
-		o = s.option(form.Value, "network", _("Network"));
-		o.rmempty = false;
-		o.validate = labelValidator(_("Network"));
-
-		o = s.option(form.Value, "traffic_class", _("Traffic class"));
-		o.rmempty = false;
-		o.validate = labelValidator(_("Traffic class"));
+		o.validate = labelValidator(_("Default traffic class"));
 
 		s = m.section(form.GridSection, "dhcp_pool", _("DHCP pools"), _("Capacity is read from the referenced DHCP section; active leases are counted within this IPv4 CIDR."));
 		s.anonymous = true;
