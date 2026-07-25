@@ -104,7 +104,16 @@ local function load_hostnames()
   return by_ip, by_mac
 end
 
-local function scrape_traffic(defaults)
+local function network_for_address(pools, address, fallback)
+  for _, pool in ipairs(pools) do
+    if cidr_contains(pool.cidr, address) then
+      return pool.network
+    end
+  end
+  return fallback
+end
+
+local function scrape_traffic(pools, defaults)
   local traffic = metric("openwrt_client_traffic_bytes_total", "counter")
   local connections = metric("openwrt_client_connections_total", "counter")
   local hostnames_by_ip, hostnames_by_mac = load_hostnames()
@@ -131,7 +140,7 @@ local function scrape_traffic(defaults)
     local ip = tostring(fields[header.ip] or "")
     local hostname = hostnames_by_ip[ip] or hostnames_by_mac[mac] or "unknown"
     local labels = {
-      client_id = automatic_client_id(hostname, mac), network = defaults.network, traffic_class = defaults.traffic_class,
+      client_id = automatic_client_id(hostname, mac), network = network_for_address(pools, ip, defaults.network), traffic_class = defaults.traffic_class,
       family = escape_label(fields[header.family]), proto = escape_label(fields[header.proto]),
       port = escape_label(fields[header.port]), mac = escape_label(mac), ip = escape_label(ip),
       hostname = escape_label(hostname),
@@ -169,7 +178,7 @@ end
 
 local function scrape()
   local pools, defaults = load_config()
-  scrape_traffic(defaults)
+  scrape_traffic(pools, defaults)
   scrape_dhcp(pools)
 end
 

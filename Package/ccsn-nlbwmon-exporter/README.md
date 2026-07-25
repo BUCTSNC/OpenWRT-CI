@@ -22,7 +22,8 @@ service prometheus-node-exporter-lua restart
 
 `client_id` is derived automatically from DHCP/static-lease hostnames. Devices
 without a hostname use a stable `mac_<hex>` fallback, so no MAC-to-ID alias map
-is required. Add DHCP pools to `/etc/config/ccsn-nlbwmon-exporter`. The
+is required. Client network labels are inferred from DHCP pool CIDRs. Add DHCP
+pools to `/etc/config/ccsn-nlbwmon-exporter`. The
 source-of-truth configuration examples and firewall guidance are maintained
 with the Kubernetes GitOps repository at `network/openwrt/nlbwmon-exporter/`.
 

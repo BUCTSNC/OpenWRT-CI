@@ -78,7 +78,7 @@ return view.extend({
 		o.rmempty = false;
 		o.validate = labelValidator(_("Default traffic class"));
 
-		s = m.section(form.GridSection, "dhcp_pool", _("DHCP pools"), _("Capacity is read from the referenced DHCP section; active leases are counted within this IPv4 CIDR."));
+		s = m.section(form.GridSection, "dhcp_pool", _("DHCP pools"), _("Capacity is read from the referenced DHCP section; active leases and client network labels are inferred from this IPv4 CIDR."));
 		s.anonymous = true;
 		s.addremove = true;
 
